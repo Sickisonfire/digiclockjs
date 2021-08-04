@@ -1,0 +1,133 @@
+:root {
+  --active-tile-color: red;
+  --inactive-tile-color: rgb(20, 0, 0);
+  --tile-width: 10px;
+  --container-width: 75px;
+  --container-height: 100px;
+  --gap: 2px 2px;
+}
+body {
+  font-family: sans-serif;
+  background: black;
+  padding: 2rem;
+}
+.colon-container {
+  margin: auto calc(var(--tile-width) * 1.6);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.dot {
+  background: red;
+  border-radius: 100%;
+  width: var(--tile-width);
+  height: var(--tile-width);
+}
+.clock-container {
+  display: flex;
+}
+.two-digit-container {
+  display: flex;
+}
+.digit-container {
+  position: relative;
+  height: var(--container-height);
+  width: var(--container-width);
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 0.2fr 1fr 0.2fr 1fr 0.2fr;
+  gap: var(--gap);
+  grid-auto-flow: row;
+  justify-items: stretch;
+  grid-template-areas: '. h-tile-top .' 'v-tile-left-top . v-tile-right-top' '. h-tile-center .' 'v-tile-left-bottom . v-tile-right-bottom' '. h-tile-bottom .';
+}
+.h-tile-center {
+  justify-self: center;
+  align-self: center;
+  grid-area: h-tile-center;
+}
+.h-tile-bottom {
+  justify-self: center;
+  align-self: end;
+  grid-area: h-tile-bottom;
+}
+.h-tile-top {
+  justify-self: center;
+  align-self: start;
+  grid-area: h-tile-top;
+}
+.v-tile-left-top {
+  justify-self: end;
+  align-self: center;
+  grid-area: v-tile-left-top;
+}
+.v-tile-left-bottom {
+  justify-self: end;
+  align-self: center;
+  grid-area: v-tile-left-bottom;
+}
+.v-tile-right-top {
+  justify-self: start;
+  align-self: center;
+  grid-area: v-tile-right-top;
+}
+.v-tile-right-bottom {
+  justify-self: start;
+  align-self: center;
+  grid-area: v-tile-right-bottom;
+}
+.v-tile,
+.h-tile {
+  position: relative;
+  background: var(--inactive-tile-color);
+  border-color: var(--inactive-tile-color);
+}
+.v-tile {
+  width: var(--tile-width);
+  height: 100%;
+}
+.h-tile {
+  width: 100%;
+  height: var(--tile-width);
+}
+.v-tile::before,
+.v-tile::after,
+.h-tile::before,
+.h-tile::after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  border: calc(var(--tile-width) / 2) solid transparent;
+}
+.v-tile::before {
+  top: calc(var(--tile-width) * -1);
+  border-bottom: calc(var(--tile-width) / 2) solid var(--inactive-tile-color);
+}
+.v-tile::after {
+  top: 100%;
+  border-top: calc(var(--tile-width) / 2) solid var(--inactive-tile-color);
+}
+.h-tile::before {
+  left: calc(var(--tile-width) * -1);
+  border-right: calc(var(--tile-width) / 2) solid var(--inactive-tile-color);
+}
+.h-tile::after {
+  left: 100%;
+  border-left: calc(var(--tile-width) / 2) solid var(--inactive-tile-color);
+}
+.active {
+  background: red;
+}
+.active.v-tile::after {
+  border-top: calc(var(--tile-width) / 2) solid var(--active-tile-color);
+}
+.active.v-tile::before {
+  border-bottom: calc(var(--tile-width) / 2) solid var(--active-tile-color);
+}
+.active.h-tile::after {
+  border-left: calc(var(--tile-width) / 2) solid var(--active-tile-color);
+}
+.active.h-tile::before {
+  border-right: calc(var(--tile-width) / 2) solid var(--active-tile-color);
+}
