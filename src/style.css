@@ -9,7 +9,7 @@
 body {
   font-family: sans-serif;
   background: black;
-  padding: 2rem;
+  padding: 1rem;
 }
 .colon-container {
   margin: auto calc(var(--tile-width) * 1.6);
@@ -18,7 +18,7 @@ body {
   gap: 1.5rem;
 }
 .dot {
-  background: red;
+  background: var(--inactive-tile-color);
   border-radius: 100%;
   width: var(--tile-width);
   height: var(--tile-width);
