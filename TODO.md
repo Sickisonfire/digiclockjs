@@ -3,11 +3,13 @@
 * [X] add prettier
 * [ ] code logic
     * [X] render component 
-    * [ ] state
+    * [X] state
     * [ ] configurability 
+    * [ ] add modes
+    * [ ] improve timing functions
 
 * [ ] add tests
 
 * [ ] refactor 
     * [ ] clean up types
-    * [ ] folder structure
+    * [X] folder structure
