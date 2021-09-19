@@ -1,36 +1,38 @@
 .clock-container {
-  --active-tile-color: hsl(350, 90%, 50%);
-  --inactive-tile-color: hsl(350, 20%, 5%);
-  --tile-width: 10px;
-  --container-width: 75px;
-  --container-height: 100px;
-  --gap: 2px 2px;
+  --digiclock-active-color: hsl(350, 90%, 50%);
+  --digiclock-inactive-color: hsl(350, 20%, 5%);
+  --digiclock-tile-width: 10px;
+  --digiclock-digit-width: 75px;
+  --digiclock-digit-height: 100px;
+  --digiclock-tile-gap: 2px 2px;
+  --digiclock-container-color: transparent;
   display: flex;
+  background: var(--digiclock-container-color);
 }
 
 .colon-container {
-  margin: auto calc(var(--tile-width) * 1.6);
+  margin: auto calc(var(--digiclock-tile-width) * 1.6);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 .dot {
-  background: var(--inactive-tile-color);
+  background: var(--digiclock-inactive-color);
   border-radius: 100%;
-  width: var(--tile-width);
-  height: var(--tile-width);
+  width: var(--digiclock-tile-width);
+  height: var(--digiclock-tile-width);
 }
 .two-digit-container {
   display: flex;
 }
 .digit-container {
   position: relative;
-  height: var(--container-height);
-  width: var(--container-width);
+  height: var(--digiclock-digit-height);
+  width: var(--digiclock-digit-width);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 0.2fr 1fr 0.2fr 1fr 0.2fr;
-  gap: var(--gap);
+  gap: var(--digiclock-tile-gap);
   grid-auto-flow: row;
   justify-items: stretch;
   grid-template-areas: '. h-tile-top .' 'v-tile-left-top . v-tile-right-top' '. h-tile-center .' 'v-tile-left-bottom . v-tile-right-bottom' '. h-tile-bottom .';
@@ -73,17 +75,17 @@
 .v-tile,
 .h-tile {
   position: relative;
-  background: var(--inactive-tile-color);
-  border-color: var(--inactive-tile-color);
+  background: var(--digiclock-inactive-color);
+  border-color: var(--digiclock-inactive-color);
   transition: background-color 200ms;
 }
 .v-tile {
-  width: var(--tile-width);
+  width: var(--digiclock-tile-width);
   height: 100%;
 }
 .h-tile {
   width: 100%;
-  height: var(--tile-width);
+  height: var(--digiclock-tile-width);
 }
 .v-tile::before,
 .v-tile::after,
@@ -93,29 +95,33 @@
   content: '';
   width: 0px;
   height: 0px;
-  border: calc(var(--tile-width) / 2) solid transparent;
+  border: calc(var(--digiclock-tile-width) / 2) solid transparent;
   transition: border-color 200ms;
 }
 .v-tile::before {
-  top: calc(var(--tile-width) * -1);
-  border-bottom: calc(var(--tile-width) / 2) solid var(--inactive-tile-color);
+  top: calc(var(--digiclock-tile-width) * -1);
+  border-bottom: calc(var(--digiclock-tile-width) / 2) solid
+    var(--digiclock-inactive-color);
 }
 .v-tile::after {
   top: 100%;
-  border-top: calc(var(--tile-width) / 2) solid var(--inactive-tile-color);
+  border-top: calc(var(--digiclock-tile-width) / 2) solid
+    var(--digiclock-inactive-color);
 }
 .h-tile::before {
-  left: calc(var(--tile-width) * -1);
-  border-right: calc(var(--tile-width) / 2) solid var(--inactive-tile-color);
+  left: calc(var(--digiclock-tile-width) * -1);
+  border-right: calc(var(--digiclock-tile-width) / 2) solid
+    var(--digiclock-inactive-color);
 }
 .h-tile::after {
   left: 100%;
-  border-left: calc(var(--tile-width) / 2) solid var(--inactive-tile-color);
+  border-left: calc(var(--digiclock-tile-width) / 2) solid
+    var(--digiclock-inactive-color);
 }
 .active {
-  background: var(--active-tile-color);
-  animation: shake 1s ease 0s 1 normal;
-  /*box-shadow: 0px 0px 10px 5px hsla(350, 90%, 50%, 0.3); */
+  background: var(--digiclock-active-color);
+  animation: test 1s ease 0s 1 normal;
+  box-shadow: 0px 0px 10px 5px hsla(350, 90%, 50%, 0.3);
 }
 @keyframes shake {
   0% {
@@ -175,14 +181,18 @@
   }
 }
 .active.v-tile::after {
-  border-top: calc(var(--tile-width) / 2) solid var(--active-tile-color);
+  border-top: calc(var(--digiclock-tile-width) / 2) solid
+    var(--digiclock-active-color);
 }
 .active.v-tile::before {
-  border-bottom: calc(var(--tile-width) / 2) solid var(--active-tile-color);
+  border-bottom: calc(var(--digiclock-tile-width) / 2) solid
+    var(--digiclock-active-color);
 }
 .active.h-tile::after {
-  border-left: calc(var(--tile-width) / 2) solid var(--active-tile-color);
+  border-left: calc(var(--digiclock-tile-width) / 2) solid
+    var(--digiclock-active-color);
 }
 .active.h-tile::before {
-  border-right: calc(var(--tile-width) / 2) solid var(--active-tile-color);
+  border-right: calc(var(--digiclock-tile-width) / 2) solid
+    var(--digiclock-active-color);
 }

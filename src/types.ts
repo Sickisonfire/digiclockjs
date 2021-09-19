@@ -5,12 +5,17 @@ export interface ConfigOptions {
 
 export type Config = Partial<ConfigOptions>;
 
-type ColorCombinations = { active: string; inactive: string };
-interface Styles {
-  color: ColorCombinations;
+export interface Styles {
+  activeColor?: string;
+  inactiveColor?: string;
+  tileWidth?: string;
+  digitWidth?: string;
+  digitHeight?: string;
+  tileGap?: string;
+  containerColor?: string;
 }
 
-type ClockMode = 'time' | 'stopwatch' | 'timer';
+type ClockMode = 'time' | 'stopwatch' | 'countdown';
 
 export const TileIdAndClasses = {
   tileT: ['h-tile', 'h-tile-top'],

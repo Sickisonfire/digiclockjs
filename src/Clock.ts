@@ -1,6 +1,7 @@
 import './clockstyles.css';
-import { Config } from './types';
+import { Config, Styles } from './types';
 import { Digit } from './Digit';
+import { convertCamelToKebabCase } from './utils';
 
 //const INITIALVALUES: ConfigOptions = {
 //  mode: 'time',
@@ -22,9 +23,20 @@ export class Clock {
     this.createDigits();
     this.appendChildren();
     this.useWatchMode();
+    this.configure(config.styles);
   }
   static render(clock: Clock, renderTarget: HTMLElement) {
     renderTarget.appendChild(clock.htmlElement);
+  }
+  private configure(styles: Styles | undefined) {
+    if (styles) {
+      for (const [cssVar, cssValue] of Object.entries(styles)) {
+        this.htmlElement.style.setProperty(
+          `--digiclock-${convertCamelToKebabCase(cssVar)}`,
+          cssValue
+        );
+      }
+    }
   }
   private appendChildren() {
     const container = this.htmlElement.querySelectorAll('.two-digit-container');
