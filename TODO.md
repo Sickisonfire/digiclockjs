@@ -8,8 +8,9 @@
     * [ ] add modes
     * [ ] improve timing functions
 
-* [ ] add tests
+* [X] add tests
 
 * [ ] refactor 
     * [ ] clean up types
     * [X] folder structure
+    * [ ] make it npm ready

@@ -27,18 +27,17 @@ export class Digit {
   }
 
   private createTiles() {
-    for (const [tileName, tileClasses] of Object.entries(TileIdAndClasses)) {
-      const tileId = `${tileName}-${this.digitId}`;
-      const tile = new Tile(tileId, tileClasses);
+    Object.values(TileIdAndClasses).forEach(tileClasses => {
+      const tile = new Tile(tileClasses);
       this.tiles.push(tile);
-    }
+    });
   }
 
-  updateState(newDigit: number) {
-    const newTileState = DigitTileStateMapping[newDigit];
+  updateState(newDigitState: number) {
+    const newTileState = DigitTileStateMapping[newDigitState];
 
     newTileState.forEach((tileState, index) => {
-      this.tiles[index].htmlElement.classList.toggle('active', tileState);
+      this.tiles[index].updateState(tileState);
     });
   }
 }

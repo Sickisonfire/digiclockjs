@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "target": "es5",
     "rootDir": "src",
-    "outDir":"dist",
+    "outDir": "dist",
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",

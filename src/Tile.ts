@@ -1,16 +1,20 @@
 export class Tile {
-  tileId: string;
   htmlElement: HTMLDivElement;
+  state: boolean;
 
-  constructor(tileId: string, tileHtmlClasses: string[]) {
-    this.tileId = tileId;
+  constructor(tileHtmlClasses: string[]) {
     this.htmlElement = this.createHtmlElement(tileHtmlClasses);
+    this.state = false;
   }
   private createHtmlElement(tileHtmlClasses: string[]): HTMLDivElement {
     const element = document.createElement('div');
-    element.id = this.tileId;
     element.classList.add(...tileHtmlClasses);
 
     return element;
+  }
+
+  updateState(state: boolean) {
+    this.state = state;
+    this.htmlElement.classList.toggle('active', this.state);
   }
 }
