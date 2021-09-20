@@ -13,6 +13,7 @@ export interface Styles {
   digitHeight?: string;
   tileGap?: string;
   containerColor?: string;
+  animation?: string;
 }
 
 type ClockMode = 'time' | 'stopwatch' | 'countdown';

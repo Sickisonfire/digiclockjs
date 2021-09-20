@@ -4,7 +4,7 @@
 * [ ] code logic
     * [X] render component 
     * [X] state
-    * [ ] configurability 
+    * [X] configurability 
     * [ ] add modes
     * [ ] improve timing functions
 

@@ -3,31 +3,22 @@ import { Config, Styles } from './types';
 import { Digit } from './Digit';
 import { convertCamelToKebabCase } from './utils';
 
-//const INITIALVALUES: ConfigOptions = {
-//  mode: 'time',
-//  styles: { color: { active: 'red', inactive: 'blue' } },
-//};
-
 export class Clock {
   htmlElement: HTMLDivElement;
   digits: Digit[] = [];
-  config: Config;
 
   constructor(config: Config = {}) {
-    //    const options = { ...INITIALVALUES, ...config };
-    //TODO: options
-    //TODO: Timing functions and accuracy
-    //TODO: handle styling better
-    this.config = config;
     this.htmlElement = this.createHtmlElement();
     this.createDigits();
     this.appendChildren();
     this.useWatchMode();
     this.configure(config.styles);
   }
+
   static render(clock: Clock, renderTarget: HTMLElement) {
     renderTarget.appendChild(clock.htmlElement);
   }
+
   private configure(styles: Styles | undefined) {
     if (styles) {
       for (const [cssVar, cssValue] of Object.entries(styles)) {
@@ -38,6 +29,7 @@ export class Clock {
       }
     }
   }
+
   private appendChildren() {
     const container = this.htmlElement.querySelectorAll('.two-digit-container');
     container[0].append(this.digits[0].htmlElement, this.digits[1].htmlElement);
